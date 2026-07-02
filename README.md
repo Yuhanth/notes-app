@@ -1,0 +1,1 @@
+Full-stack Notes application built with React, Vite, and FastAPI to learn REST APIs and frontend-backend communication.
