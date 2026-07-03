@@ -1,33 +1,35 @@
 import Header from "./components/Header";
 import Welcome from "./components/Welcome";
 import NoteList from "./components/NoteList";
+import { useState } from "react";
 
 const name = "Yuhanth";
 
-const notes = [
-  {
-    id: 1,
-    title: "Learn React",
-    content: "Understand JSX, components and props.",
-  },
-  {
-    id: 2,
-    title: "Learn FastAPI",
-    content: "Build REST APIs using Python.",
-  },
-  {
-    id: 3,
-    title: "Connect Frontend and Backend",
-    content: "Use fetch() to call FastAPI endpoints.",
-  },
-];
-
 function App() {
+
+  const [notes, setNotes] = useState([
+    {
+      id: 1,
+      title: "Learn React",
+      content: "Understand JSX, components and props.",
+    },
+  ]);
+  
+  function handleClick() {
+    setNotes([...notes,{
+      id: notes.length + 1,
+      title: "Sample",
+      content: "Sample note.",
+    }])
+  }
+  
   return (
     <div>
       <Header />
       <Welcome name={name} />
+      <button onClick={handleClick}>+ Add Sample Note</button>
       <NoteList notes={notes} />
+      
     </div>
   );
 }
