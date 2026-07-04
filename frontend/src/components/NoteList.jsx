@@ -1,10 +1,10 @@
 import NoteCard from "./NoteCard.jsx";
 
-function NoteList(props) {
+function NoteList({ notes, deleteNote }) {
   return (
     <>
-      {props.notes.map((note) => (
-        <NoteCard key={note.id} note={note} />
+      {notes.map((note) => (
+        <NoteCard key={note.id} note={note} deleteNote={deleteNote} />
       ))}
     </>
   );

@@ -20,18 +20,22 @@ function App() {
       ...notes,
       {
         id: notes.length + 1,
-        ...newNote
+        ...newNote,
       },
     ]);
+  }
+
+  function deleteNote(id) {
+    setNotes(notes.filter((note) => note.id !== id));
   }
 
   return (
     <div>
       <Header />
       <Welcome name={name} />
-      <AddNoteForm addNote={addNote}/>
+      <AddNoteForm addNote={addNote} />
       {/* <button onClick={}>Add Note</button> */}
-      <NoteList notes={notes} />
+      <NoteList notes={notes} deleteNote={deleteNote} />
     </div>
   );
 }
