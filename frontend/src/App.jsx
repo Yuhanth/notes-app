@@ -1,12 +1,12 @@
 import Header from "./components/Header";
 import Welcome from "./components/Welcome";
 import NoteList from "./components/NoteList";
+import AddNoteForm from "./components/AddNoteForm";
 import { useState } from "react";
 
 const name = "Yuhanth";
 
 function App() {
-
   const [notes, setNotes] = useState([
     {
       id: 1,
@@ -14,22 +14,24 @@ function App() {
       content: "Understand JSX, components and props.",
     },
   ]);
-  
-  function handleClick() {
-    setNotes([...notes,{
-      id: notes.length + 1,
-      title: "Sample",
-      content: "Sample note.",
-    }])
+
+  function addNote(newNote) {
+    setNotes([
+      ...notes,
+      {
+        id: notes.length + 1,
+        ...newNote
+      },
+    ]);
   }
-  
+
   return (
     <div>
       <Header />
       <Welcome name={name} />
-      <button onClick={handleClick}>+ Add Sample Note</button>
+      <AddNoteForm addNote={addNote}/>
+      {/* <button onClick={}>Add Note</button> */}
       <NoteList notes={notes} />
-      
     </div>
   );
 }
